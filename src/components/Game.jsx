@@ -7,17 +7,22 @@ import { getSmallImage } from '../utils'
 
 const Game = ({ name, released, id, image }) => {
     const dispatch = useDispatch()
+    const stringPathId = id.toString()
     const loadDetailHandler = () => {
         // stops us from scrolling the main page when game details modal pops opening
         document.body.style.overflow = 'hidden'
         dispatch(loadDetails(id))
     }
     return (
-        <StyledGame onClick={loadDetailHandler}>
+        <StyledGame layoutId={stringPathId} onClick={loadDetailHandler}>
             <Link to={`/game/${id}`}>
-                <h3>{name}</h3>
+                <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
                 <p>{released}</p>
-                <img src={getSmallImage(image, 640)} alt={name} />
+                <motion.img
+                    layoutId={`image ${stringPathId}`}
+                    src={getSmallImage(image, 640)}
+                    alt={name}
+                />
             </Link>
         </StyledGame>
     )
