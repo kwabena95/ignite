@@ -1,8 +1,9 @@
-import { FETCH_GAMES_DETAILS } from './gameActionTypes'
+import { FETCH_GAMES_DETAILS, LOADING_DETAILS } from './gameActionTypes'
 
 const initialState = {
-    game: {},
-    screenshot: {},
+    game: { platforms: [] },
+    screenshot: { results: [] },
+    isLoading: true,
 }
 
 const detailReducer = (state = initialState, action) => {
@@ -12,6 +13,12 @@ const detailReducer = (state = initialState, action) => {
                 ...state,
                 game: action.payload.game,
                 screenshot: action.payload.screenshot,
+                isLoading: false,
+            }
+        case LOADING_DETAILS:
+            return {
+                ...state,
+                isLoading: true,
             }
         default:
             return state
