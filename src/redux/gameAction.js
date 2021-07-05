@@ -19,5 +19,7 @@ export const loadGames = () => async (dispatch) => {
                 newGames: newGamesData.data.results,
             },
         })
-    } catch (err) {}
+    } catch (err) {
+        throw new Error(err)
+    }
 }
