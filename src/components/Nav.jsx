@@ -1,7 +1,7 @@
 import { fetchSearch } from '../redux/gameAction'
 import { CLEAR_SEARCH } from '../redux/gameActionTypes'
 import { useDispatch } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import logo from '../img/logo.svg'
