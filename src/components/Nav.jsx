@@ -1,10 +1,11 @@
 import { fetchSearch } from '../redux/gameAction'
 import { CLEAR_SEARCH } from '../redux/gameActionTypes'
 import { useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import logo from '../img/logo.svg'
+import { fadeIn } from '../animation'
 
 const Nav = () => {
     const dispatch = useDispatch()
@@ -24,7 +25,7 @@ const Nav = () => {
         })
     }
     return (
-        <StyledNav>
+        <StyledNav variants={fadeIn} initial="hidden" animate="show">
             <Logo onClick={clearSearch}>
                 <img src={logo} alt="logo" />
                 <h1>Ignite</h1>
