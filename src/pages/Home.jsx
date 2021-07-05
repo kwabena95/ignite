@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadGames } from '../redux/gameAction'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import GameDetail from '../components/GameDetail'
 
 // components
 import Game from '../components/Game'
@@ -18,6 +19,7 @@ const Home = () => {
     const { newGames, upcoming, popular } = useSelector((state) => state.games)
     return (
         <GameList>
+            <GameDetail />
             <h2>Upcoming Games</h2>
             <Games>
                 {upcoming.map((game) => (
