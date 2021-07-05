@@ -1,9 +1,24 @@
-import { createStore, combineReducers } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import gameReducer from './gameAction'
+import { FETCH_GAMES } from './gameActionTypes'
 
-const rootReducer = combineReducers({
-    games: gameReducer,
-})
+const initialState = {
+    newGames: [],
+    popular: [],
+    upcoming: [],
+    searched: [],
+}
 
-export const store = createStore(rootReducer, composeWithDevTools())
+const gameReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case FETCH_GAMES:
+            return {
+                ...state,
+                popular: action.payload.popular,
+                upcoming: action.payload.upcoming,
+                newGames: action.payload.newGames,
+            }
+        default:
+            return state
+    }
+}
+
+export default gameReducer
